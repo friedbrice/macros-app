@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>local.macros</groupId>
+    <artifactId>macros-app</artifactId>
+    <version>local-SNAPSHOT</version>
+
+    <properties>
+        <scala_major>2.11</scala_major>
+        <scala_major_minor>2.11.8</scala_major_minor>
+        <play-json_version>2.6.0-M6</play-json_version>
+        <monocle_version>1.4.0</monocle_version>
+        <joda-converter_version>1.8.1</joda-converter_version>
+        <scala-maven-plugin_version>3.2.2</scala-maven-plugin_version>
+        <paradise_version>3.0.0-M4</paradise_version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala_major_minor}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-json_${scala_major}</artifactId>
+            <version>${play-json_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.julien-truffaut</groupId>
+            <artifactId>monocle_${scala_major}</artifactId>
+            <version>${monocle_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.joda</groupId>
+            <artifactId>joda-convert</artifactId>
+            <version>${joda-converter_version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin_version}</version>
+                <configuration>
+                    <scalaVersion>${scala_major_minor}</scalaVersion>
+                    <scalaCompatVersion>${scala_major_minor}</scalaCompatVersion>
+                    <compilerPlugins>
+                        <compilerPlugin>
+                            <groupId>org.scalamacros</groupId>
+                            <artifactId>paradise_${scala_major_minor}</artifactId>
+                            <version>${paradise_version}</version>
+                        </compilerPlugin>
+                    </compilerPlugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
