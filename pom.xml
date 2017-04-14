@@ -9,9 +9,10 @@
     <version>local-SNAPSHOT</version>
 
     <properties>
-        <scala_major>2.11</scala_major>
-        <scala_major_minor>2.11.8</scala_major_minor>
-        <play-json_version>2.6.0-M6</play-json_version>
+        <scala-major_version>2.11</scala-major_version>
+        <scala-major-minor_version>2.11.8</scala-major-minor_version>
+        <serialization_version>1.3-SNAPSHOT</serialization_version>
+        <argonaut_version>6.2</argonaut_version>
         <monocle_version>1.4.0</monocle_version>
         <joda-converter_version>1.8.1</joda-converter_version>
         <scala-maven-plugin_version>3.2.2</scala-maven-plugin_version>
@@ -22,16 +23,21 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala_major_minor}</version>
+            <version>${scala-major-minor_version}</version>
         </dependency>
         <dependency>
-            <groupId>com.typesafe.play</groupId>
-            <artifactId>play-json_${scala_major}</artifactId>
-            <version>${play-json_version}</version>
+            <groupId>com.cj</groupId>
+            <artifactId>serialization</artifactId>
+            <version>${serialization_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.argonaut</groupId>
+            <artifactId>argonaut_${scala-major_version}</artifactId>
+            <version>${argonaut_version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.julien-truffaut</groupId>
-            <artifactId>monocle_${scala_major}</artifactId>
+            <artifactId>monocle_${scala-major_version}</artifactId>
             <version>${monocle_version}</version>
         </dependency>
         <dependency>
@@ -48,12 +54,12 @@
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>${scala-maven-plugin_version}</version>
                 <configuration>
-                    <scalaVersion>${scala_major_minor}</scalaVersion>
-                    <scalaCompatVersion>${scala_major_minor}</scalaCompatVersion>
+                    <scalaVersion>${scala-major-minor_version}</scalaVersion>
+                    <scalaCompatVersion>${scala-major-minor_version}</scalaCompatVersion>
                     <compilerPlugins>
                         <compilerPlugin>
                             <groupId>org.scalamacros</groupId>
-                            <artifactId>paradise_${scala_major_minor}</artifactId>
+                            <artifactId>paradise_${scala-major-minor_version}</artifactId>
                             <version>${paradise_version}</version>
                         </compilerPlugin>
                     </compilerPlugins>

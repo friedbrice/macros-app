@@ -4,9 +4,9 @@ import funutil._
 
 object Main extends App {
 
-  import play.api.libs.json.Json
+  import com.cj.serialization.json._
 
-  val rawJsonParticle: String =
+  val raw: String =
     """{
       |  "position" : {
       |    "x" : 3,
@@ -22,10 +22,13 @@ object Main extends App {
       |}""".stripMargin
 
   val particle: Particle =
-    Json.parse(rawJsonParticle).as[Particle]
+    parseJson[Particle](raw).getOrThrow
 
   val newParticle: Particle =
     Particle.position ~ Point.x modify {_ + 2} $ particle
 
-  println(Json.prettyPrint(Json.toJson(newParticle)))
+  val newRaw: String =
+    prettyJson(newParticle)
+
+  println(newRaw)
 }
