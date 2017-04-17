@@ -2,8 +2,8 @@ package local
 
 package object macros {
 
-  import monocle.macros.Lenses
   import argonaut.CodecJson
+  import monocle.macros.Lenses
 
   @Lenses
   case class Particle(position: Point, velocity: Point, mass: Double)

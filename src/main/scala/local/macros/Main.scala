@@ -1,10 +1,9 @@
 package local.macros
 
-import funutil._
-
 object Main extends App {
 
-  import com.cj.serialization.json._
+  import funutil._
+  import argonaut_wrapper._
 
   val raw: String =
     """{
@@ -22,13 +21,13 @@ object Main extends App {
       |}""".stripMargin
 
   val particle: Particle =
-    parseJson[Particle](raw).getOrThrow
+    parseJson[Particle](raw)(particleCodec).get
 
   val newParticle: Particle =
     Particle.position ~ Point.x modify {_ + 2} $ particle
 
   val newRaw: String =
-    prettyJson(newParticle)
+    prettyJson(newParticle)(particleCodec)
 
   println(newRaw)
 }
